@@ -10,7 +10,7 @@
     <div *ngFor="let msg of messages; trackBy: messageID; let i = index">
       <div class="messageDateContainerStyle" *ngIf="(i === 0) && !msg._composedAt">
         <span class="messageDateStyle">{{
-          msg?.sentAt * 1000 | date: "dd/MM/yyyy"
+          msg?.sentAt * 1000 | date: "MM/dd/yyyy"
         }}</span>
       </div>
       <div
@@ -20,7 +20,7 @@
         "
       >
         <span class="messageDateStyle">{{
-          (msg?.sentAt)  * 1000 | date: "dd/MM/yyyy"
+          (msg?.sentAt)  * 1000 | date: "MM/dd/yyyy"
         }}</span>
       </div>
       <!--CASE FOR CALL MESSAGES-->
@@ -30,7 +30,7 @@
           [loggedInUserUid]="loggedInUser?.uid"
         ></cometchat-action-message-bubble>
       </div>
-   
+
       <!--CASE FOR CALL MESSAGES ENDS-->
       <!-- CASE FOR DELETED MESSAGES -->
       <div *ngIf="msg?.deletedAt; else elseBlock">

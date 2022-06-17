@@ -168,7 +168,7 @@ export const COMETCHAT_CONSTANTS = {
   SENT: "sent",
   DELIVERED: "deliv",
   ENTER_YOUR_PASSWORD: "Enter your password",
-  LAST_ACTIVE_AT: "Last Active At: ",
+  LAST_ACTIVE_AT: "Last Active at: ",
   REACTED: "reacted",
   DELETE_CONVERSATION: "Do you want to delete the conversation?",
   DELETE_BUTTON_TEXT: "Delete",

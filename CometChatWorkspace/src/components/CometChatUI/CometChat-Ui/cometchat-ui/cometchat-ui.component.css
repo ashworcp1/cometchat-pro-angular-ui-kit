@@ -2,8 +2,9 @@
   overflow: hidden;
 }
 .unifiedStyle {
+  min-height: 80vh;
+  max-height: 80vh;
   display: flex;
-  height: 100%;
   width: 100%;
   box-sizing: border-box;
   font-family: Inter, sans-serif;
@@ -27,13 +28,11 @@
 .unifiedSidebarStyle {
   width: 280px;
   border-right: 1px solid #eaeaea;
-  height: 100%;
   position: relative;
 }
 
 .unifiedMainStyle {
   width: calc(100% - 280px);
-  height: 100%;
   order: 2;
 }
 

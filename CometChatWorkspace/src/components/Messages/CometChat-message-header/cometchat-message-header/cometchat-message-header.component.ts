@@ -370,10 +370,10 @@ export class CometChatMessageHeaderComponent
       if(this.item.conversationId) {
         date = date * 1000;
         lastActiveDate =
-          lastActiveDate + this.datepipe.transform(date, "dd MMMM y, h:mm a");
+          lastActiveDate + this.datepipe.transform(date, "MMMM dd y, h:mm a");
       } else {
         lastActiveDate =
-          lastActiveDate + this.datepipe.transform(date, "dd MMMM y, h:mm a");
+          lastActiveDate + this.datepipe.transform(date, "MMMM dd y, h:mm a");
       }
 
       return lastActiveDate;
