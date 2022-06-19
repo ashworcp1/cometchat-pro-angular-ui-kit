@@ -44,7 +44,7 @@ export class CometChatGroupListComponent
   @Output() actionGenerated: EventEmitter<any> = new EventEmitter();
 
   constructor(private CometChatService: CometChatService) {
-    
+
   }
 
   ngOnChanges(change: SimpleChanges) {
@@ -89,7 +89,7 @@ export class CometChatGroupListComponent
 
       /*
        * Updating Members count on leaving a group
-       */ 
+       */
       this.CometChatService.onLeaveGroup.subscribe((leftGroup: any) => {
         const groups = [...this.groupList];
         const index = groups.findIndex((group) => group.guid == leftGroup.guid);
@@ -97,7 +97,7 @@ export class CometChatGroupListComponent
           const group = groups[index];
           group.membersCount -= 1;
           group.hasJoined = false;
-        } 
+        }
       })
 
       if (change[enums.GROUP_TO_DELETE]) {
@@ -129,7 +129,7 @@ export class CometChatGroupListComponent
         }
       }
 
-      
+
     } catch (error) {
       logger(error);
     }
@@ -219,7 +219,7 @@ export class CometChatGroupListComponent
               user: joinedUser,
             });
           },
-        
+
         })
       );
       CometChat.addMessageListener(
@@ -227,11 +227,11 @@ export class CometChatGroupListComponent
         new CometChat.MessageListener({
           onTextMessageReceived: (textMessage: any) => {
             // this.messageUpdated(enums.TEXT_MESSAGE_RECEIVED, textMessage);
-    
+
           },
           onCustomMessageReceived: (customMessage: any) => {
             if(customMessage.type == enums.CALL_TYPE_DIRECT){
-          
+
               this.actionGenerated.emit({
                 type:enums.CALL_TYPE_DIRECT,
                 payLoad:customMessage
@@ -239,7 +239,7 @@ export class CometChatGroupListComponent
             }
             // this.messageUpdated(enums.CUSTOM_MESSAGE_RECEIVED, customMessage);
           },
-       
+
         })
       );
     } catch (error) {
@@ -247,7 +247,7 @@ export class CometChatGroupListComponent
       logger(error);
     }
   }
-  
+
 
   /**
    * Builds a request for fetching a list of group matching the serach key
@@ -294,16 +294,18 @@ export class CometChatGroupListComponent
               }
             })
             .catch((error: any) => {
-              this.decoratorMessage = COMETCHAT_CONSTANTS.ERROR;
-              logger(
-                "[CometChatGroupList] getGroups fetchNextGroups error",
-                error
-              );
+//               this.decoratorMessage = COMETCHAT_CONSTANTS.ERROR;
+//               logger(
+//                 "[CometChatGroupList] getGroups fetchNextGroups error",
+//                 error
+//               );
+        this.getGroups();
             });
         })
         .catch((error) => {
-          this.decoratorMessage = COMETCHAT_CONSTANTS.ERROR;
-          logger("[CometChatGroupList] getUsers getLoggedInUser error", error);
+                this.getGroups();
+//           this.decoratorMessage = COMETCHAT_CONSTANTS.ERROR;
+//           logger("[CometChatGroupList] getUsers getLoggedInUser error", error);
         });
     } catch (error) {
       logger(error);
