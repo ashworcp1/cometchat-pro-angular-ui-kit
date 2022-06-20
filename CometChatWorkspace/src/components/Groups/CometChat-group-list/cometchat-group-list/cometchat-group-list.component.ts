@@ -140,6 +140,7 @@ export class CometChatGroupListComponent
       this.groupRequest = this.groupListRequestBuilder(this.searchKey);
       this.getGroups();
       this.attachListeners(this.groupUpdated);
+      this.joinGroupIfPresent();
     } catch (error) {
       logger(error);
     }
@@ -151,6 +152,20 @@ export class CometChatGroupListComponent
       CometChat.removeGroupListener(this.groupListenerId);
     } catch (error) {
       logger(error);
+    }
+  }
+
+  joinGroupIfPresent() {
+    const GUID: string = localStorage.getItem("GUID");
+    if (GUID) {
+      CometChat.getGroup(GUID).then(
+        (group: CometChat.Group) => {
+            console.log("Group details fetched successfully:", group);
+            this.groupClicked(group);
+        }, (error: CometChat.CometChatException) => {
+            console.log("Group details fetching failed with exception:", error);
+        }
+      );
     }
   }
 
